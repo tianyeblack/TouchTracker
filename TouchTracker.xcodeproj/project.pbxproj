@@ -14,6 +14,8 @@
 		CA5A750B1DC3CE7400B98C82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA5A750A1DC3CE7400B98C82 /* Assets.xcassets */; };
 		CA5A750E1DC3CE7400B98C82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA5A750C1DC3CE7400B98C82 /* LaunchScreen.storyboard */; };
 		CA5A75161DC3CF5800B98C82 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CA5A75151DC3CF5800B98C82 /* .gitignore */; };
+		CA5A75191DC3D11100B98C82 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5A75181DC3D11100B98C82 /* Line.m */; };
+		CA5A751C1DC3D1C100B98C82 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5A751B1DC3D1C100B98C82 /* DrawView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,10 @@
 		CA5A750D1DC3CE7400B98C82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA5A750F1DC3CE7400B98C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA5A75151DC3CF5800B98C82 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CA5A75171DC3D11100B98C82 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		CA5A75181DC3D11100B98C82 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		CA5A751A1DC3D1C100B98C82 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		CA5A751B1DC3D1C100B98C82 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,10 @@
 				CA5A750C1DC3CE7400B98C82 /* LaunchScreen.storyboard */,
 				CA5A750F1DC3CE7400B98C82 /* Info.plist */,
 				CA5A74FE1DC3CE7400B98C82 /* Supporting Files */,
+				CA5A75171DC3D11100B98C82 /* Line.h */,
+				CA5A751A1DC3D1C100B98C82 /* DrawView.h */,
+				CA5A751B1DC3D1C100B98C82 /* DrawView.m */,
+				CA5A75181DC3D11100B98C82 /* Line.m */,
 			);
 			path = TouchTracker;
 			sourceTree = "<group>";
@@ -155,8 +165,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA5A75061DC3CE7400B98C82 /* ViewController.m in Sources */,
+				CA5A75191DC3D11100B98C82 /* Line.m in Sources */,
 				CA5A75031DC3CE7400B98C82 /* AppDelegate.m in Sources */,
 				CA5A75001DC3CE7400B98C82 /* main.m in Sources */,
+				CA5A751C1DC3D1C100B98C82 /* DrawView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
