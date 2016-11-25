@@ -12,7 +12,10 @@
 
 - (instancetype) initWithCoder:(NSCoder *)aDecoder {
   self = [super initWithCoder: aDecoder];
-  if (self) _finishedLines = [[NSMutableArray alloc] init];
+  if (self) {
+    _finishedLines = [[NSMutableArray alloc] init];
+    _currentLines = [[NSMutableDictionary alloc] init];
+  }
   return self;
 }
 
@@ -31,37 +34,64 @@
   [[UIColor blackColor] setStroke];
   for (Line *line in _finishedLines) [self strokeLine: line];
   
-  if (_currentLine) {
-    [[UIColor redColor] setStroke];
-    [self strokeLine: _currentLine];
-  }
+  [[UIColor redColor] setStroke];
+  for (Line *line in _currentLines.allValues) [self strokeLine: line];
 }
 
 #pragma mark - Touch Events
 
 - (void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-  UITouch *touch = touches.anyObject;
+  NSLog(@"%s", __PRETTY_FUNCTION__);
   
-  CGPoint location = [touch locationInView: self];
+  for (UITouch *touch in touches) {
+    CGPoint location = [touch locationInView: self];
   
-  _currentLine = [[Line alloc] initWithBegin: location end: location];
+    Line *newLine = [[Line alloc] initWithBegin: location end: location];
+    
+    NSValue *key = [NSValue valueWithNonretainedObject: touch];
+    _currentLines[key] = newLine;
+  }
   
   [self setNeedsDisplay];
 }
 
 - (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-  UITouch *touch = touches.anyObject;
+  NSLog(@"%s", __PRETTY_FUNCTION__);
   
-  CGPoint location = [touch locationInView: self];
-  
-  _currentLine.end = location;
+  for (UITouch *touch in touches) {
+    CGPoint location = [touch locationInView: self];
+    
+    NSValue *key = [NSValue valueWithNonretainedObject: touch];
+    
+    Line *line = _currentLines[key];
+    line.end = location;
+  }
   
   [self setNeedsDisplay];
 }
 
 - (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-  [_finishedLines addObject: _currentLine];
-  _currentLine = nil;
+  NSLog(@"%s", __PRETTY_FUNCTION__);
+  
+  for (UITouch *touch in touches) {
+    CGPoint location = [touch locationInView: self];
+    
+    NSValue *key = [NSValue valueWithNonretainedObject: touch];
+    
+    Line *line = _currentLines[key];
+    line.end = location;
+    
+    [_finishedLines addObject: line];
+    [_currentLines removeObjectForKey: key];
+  }
+  
+  [self setNeedsDisplay];
+}
+
+- (void) touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+  NSLog(@"%s", __PRETTY_FUNCTION__);
+  
+  [_currentLines removeAllObjects];
   
   [self setNeedsDisplay];
 }
